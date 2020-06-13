@@ -1,0 +1,68 @@
+regform {
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+#bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/img/galaxy-3608029.jpg);
+}
+
+@media (min-width: 300px) {
+  #bg {
+    background-size: cover;
+    /*background-size: 100% 100%;*/
+  }
+}
+
+#register {
+  margin: center;
+}
+
+.container h1 {
+}
+
+#register inpi {
+}
+
+.register.input {
+  border-radius: 0px;
+}
+
+#in {
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+}
+
+#form {
+  text-align: initial;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control {
+  border-radius: 15px;
+}
+
+.form-container {
+  margin: auto;
+}
+
+#fm {
+}
+
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+  text-align: center;
+}
+
+#fm {
+  display: inline-block;
+}
+
+@media (min-width: 300px) {
+  #fm {
+  }
+}
+
