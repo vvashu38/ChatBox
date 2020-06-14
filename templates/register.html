@@ -16,16 +16,23 @@
 <body id="bg" style="width: 358px;height: 563px;">
     <div class="container">
         <div id="fm" class="fm" style="margin: auto;margin-top: 188px;width: 559px;margin-left: 398px;">
-            <form method="post" style="margin: center;color: rgb(255,255,255);margin-right: 58px;margin-bottom: 6px;margin-left: 186px;">
+            <form method="POST" action="register" style="margin: center;color: rgb(255,255,255);margin-right: 58px;margin-bottom: 6px;margin-left: 186px;">
+                {% csrf_token %}
                 <h2 class="text-center" style="color: rgb(255,255,255);"><strong>Create</strong> an account.</h2>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
+                <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" required></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" required></div>
+                <div class="form-group"><input class="form-control" type="password" name="rpassword" placeholder="Password (repeat)" required></div>
                 <div class="form-group">
-                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
-                </div>
+
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="padding-left: -52px;filter: blur(0px) brightness(87%) contrast(96%) grayscale(2%);background-color: rgba(0,123,255,0.25);">Sign Up</button></div><a class="already" href="/"
                     style="margin-left: 11px;">You already have an account? Login here.</a></form>
+
+                      <div>
+						{% for message in messages %}
+						<h3 style="font-family: 'Apple Color Emoji'; color: #1b1e21; opacity: 50%; border-radius: 15px; padding: 4px; margin-top: 20px;"> {{message}}  </h3>
+						{% endfor %}
+					  </div>
+
         </div>
     </div>
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>

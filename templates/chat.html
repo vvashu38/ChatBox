@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+<body>
+
+{% if user.is_authenticated %}
+
+<li> Hello, {{user.username}} </li>
+
+<br><br><br>
+<h1> <a href="logout"> Logout </a> </h1>
+{% endif %}
+
+{% for i in list %}
+<div>
+    <h6>{{ i.un }}</h6>
+    <h1 style="text-align: center; background-color: black; color: white " >{{ i.dm }} </h1>
+</div>
+{% endfor %}
+
+<form  id="new_msg" >
+    {% csrf_token %}
+    <input type="text" name="msg" id="msg" required>
+    <input id="sb" type="submit" value="enter" >
+</form>
+
+
+
+</body>
+<script type="text/javascript">
+    $(document).on('submit','#new_msg',function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: 'loggedin',
+            data: {
+                msg: $('#msg').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function () {
+                alert("Message send");
+
+            }
+
+            });
+        });
+</script>
+</html>
