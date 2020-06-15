@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from .models import chat
+from django.http import JsonResponse
 # Create your views here.
 
 def login(request):
@@ -48,7 +49,6 @@ def loggedin(request):
     if request.method == "POST":
         a = chat(dm=request.POST['msg'],un=request.user.username)
         a.save()
-        return redirect("loggedin")
     else:
         list = chat.objects.all()
         return render(request,'chat.html',{'list': list})
@@ -57,3 +57,6 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+def dms(request):
+    list = chat.objects.all()
+    return render('chat.html', {'list': list})
